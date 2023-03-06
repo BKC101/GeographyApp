@@ -87,65 +87,64 @@ const EditUserPage = () =>{
       <Card body outline color="success" className="mx-1 my-2" style={{ width: '30rem' }}>
         <Card.Title>Edit User Information</Card.Title>
         <Card.Body> 
-        <Form>
+          <Form>
 
-          <Form.Group className="mb-3" controlId="formName">
-            <Form.Label>Username</Form.Label>
-            <Form.Control type="text" placeholder="Enter new username" 
-                        id="username"
-                        value={form.username}
-                        onChange={handleChange}
-                        isInvalid={ !!errors.name }
-            />
-            <Form.Control.Feedback type='invalid'>
-              { errors.name }
-            </Form.Control.Feedback>
-          </Form.Group>
+            <Form.Group className="mb-3" controlId="formName">
+              <Form.Label>Username</Form.Label>
+              <Form.Control type="text" placeholder="Enter new username" 
+                          id="username"
+                          value={form.username}
+                          onChange={handleChange}
+                          isInvalid={ !!errors.name }
+              />
+              <Form.Control.Feedback type='invalid'>
+                { errors.name }
+              </Form.Control.Feedback>
+            </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formEmail">
-             <Form.Label>Email address</Form.Label>
-             <Form.Control type="text" placeholder="Enter new email address" 
-                         id="email"
-                         value={form.email}
-                         onChange={handleChange}
-                         isInvalid = { !!errors.email }
-             />
-             <Form.Control.Feedback type='invalid'>
-              { errors.email }
-             </Form.Control.Feedback>
-          </Form.Group>
+            <Form.Group className="mb-3" controlId="formEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control type="text" placeholder="Enter new email address" 
+                          id="email"
+                          value={form.email}
+                          onChange={handleChange}
+                          isInvalid = { !!errors.email }
+              />
+              <Form.Control.Feedback type='invalid'>
+                { errors.email }
+              </Form.Control.Feedback>
+            </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formPassword">
-             <Form.Label>Password</Form.Label>
-             <Form.Control type="text" placeholder="Enter new password" 
-                         id="password"
-                         value={form.password}
-                         onChange={handleChange}
-                         isInvalid = { !!errors.password }
-             />
-             <Form.Control.Feedback type='invalid'>
-              { errors.password }
-             </Form.Control.Feedback>
-          </Form.Group>
+            <Form.Group className="mb-3" controlId="formPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="text" placeholder="Enter new password" 
+                          id="password"
+                          value={form.password}
+                          onChange={handleChange}
+                          isInvalid = { !!errors.password }
+              />
+              <Form.Control.Feedback type='invalid'>
+                { errors.password }
+              </Form.Control.Feedback>
+            </Form.Group>
 
-        <Row>
-          <Col>
-          <Button variant="primary" type="submit" onClick={handleSubmit}>
-            Submit
-          </Button>
-          </Col>
+            <Row>
+              <Col>
+                <Button variant="primary" type="submit" onClick={handleSubmit}>
+                  Submit
+                </Button>
+              </Col>
 
-          <Col>
-          <Button variant="primary" type="cancel" onClick={handleCancel}>
-            Cancel
-          </Button>
-          </Col>
-        </Row>
-
-        </Form>
+              <Col>
+                <Button variant="primary" type="cancel" onClick={handleCancel}>
+                  Cancel
+                </Button>
+              </Col>
+            </Row>
+          </Form>
         </Card.Body>
       </Card>
-      </div>
+    </div>
   )
 }
 

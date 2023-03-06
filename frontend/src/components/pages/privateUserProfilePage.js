@@ -33,7 +33,9 @@ const PrivateUserProfile = () => {
   return (
     <div class="container">
       <div class="col-md-12 text-center">
-        <h1>{user && user.username}</h1>
+        <h1>
+          {user && user.username}
+        </h1>
         <div class="col-md-12 text-center">
           <>
             <Button className="me-2" onClick={handleShow}>
@@ -46,9 +48,13 @@ const PrivateUserProfile = () => {
               keyboard={false}
             >
               <Modal.Header closeButton>
-                <Modal.Title>Log Out</Modal.Title>
+                <Modal.Title>
+                  Log Out
+                </Modal.Title>
               </Modal.Header>
-              <Modal.Body>Are you sure you want to Log Out?</Modal.Body>
+              <Modal.Body>
+                Are you sure you want to Log Out?
+              </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                   Close

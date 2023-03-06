@@ -21,7 +21,9 @@ const Test = () => {
   return (
     <Stack direction="verticle" gap={2}>
       <div className="mx-2">
-        <h4>Authenticated User</h4>
+        <h4>
+          Authenticated User
+        </h4>
       </div>
       <Alert variant='primary' className="mx-2">
         {JSON.stringify(value, null, 2)}

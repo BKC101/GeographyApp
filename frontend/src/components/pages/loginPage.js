@@ -106,7 +106,8 @@ const Login = () => {
                   <Form.Text className="text-muted pt-1">
                     Dont have an account?
                     <span>
-                      <Link to="/signup" style={labelStyling}> Sign up
+                      <Link to="/signup" style={labelStyling}> 
+                        Sign up
                       </Link>
                     </span>
                   </Form.Text>
