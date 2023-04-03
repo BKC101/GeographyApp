@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import getUserInfo from "../../utilities/decodeJwt";
 
-const PRIMARY_COLOR = "#cc5c99";
+const PRIMARY_COLOR = "#0A6522";
 const SECONDARY_COLOR = '#0c0c1f'
 const url = "http://localhost:8081/user/login";
 
@@ -77,7 +77,7 @@ const Login = () => {
       <section className="vh-100">
         <div className="container-fluid h-custom vh-100">
           <div
-            className="row d-flex justify-content-center align-items-center h-100 "
+            className="row d-flex justify-content-center align-items-center h-100"
             style={backgroundStyling}>
             <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
               <Form>
@@ -89,9 +89,6 @@ const Login = () => {
                     onChange={handleChange}
                     placeholder="Enter username"
                   />
-                  <Form.Text className="text-muted">
-                    We just might sell your data
-                  </Form.Text>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                   <Form.Label style={labelStyling}>Password</Form.Label>
@@ -105,11 +102,11 @@ const Login = () => {
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                   <Form.Text className="text-muted pt-1">
                     Dont have an account?
-                    <span>
+                    <div>
                       <Link to="/signup" style={labelStyling}> 
-                        Sign up
+                        Register
                       </Link>
-                    </span>
+                    </div>
                   </Form.Text>
                 </Form.Group>
                 <div class="form-check form-switch">

@@ -6,14 +6,14 @@ const Landingpage = () => {
     <Card style={{ width: '30rem' }} className="mx-2 my-2">
       <Card.Body>
         <Card.Title>
-          Professor Brockenbrough's User Skeleton App
+          GeograBee
         </Card.Title>
         <Card.Subtitle className="mb-2 text-muted">
-          A starting point for an application.
+          Discover Our World
         </Card.Subtitle>
         <Card.Text></Card.Text>
         <Card.Link href="/signup">
-          Sign Up
+          Register
         </Card.Link>
         <Card.Link href="/login">
           Login
