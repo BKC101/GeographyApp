@@ -1,119 +1,136 @@
-function continentPage(continent) {
-    localStorage.setItem("image", continent);
-    if(continent == 'world') {
-        localStorage.setItem("title", "The World");
-        localStorage.setItem("countries", "200");
-        localStorage.setItem("population", "8 Billion");
-        localStorage.setItem("landArea", "148.94 Million km^2");
-    } else if(continent == 'europe') {
-        localStorage.setItem("title", "Europe");
-        localStorage.setItem("countries", "46");
-        localStorage.setItem("population", "745.17 Million");
-        localStorage.setItem("landArea", "10.18 Million km^2");
-    } else if(continent == 'asia') {
-        localStorage.setItem("title", "Asia");
-        localStorage.setItem("countries", "48");
-        localStorage.setItem("population", "4.69 Billion");
-        localStorage.setItem("landArea", "44.579 Million km^2");
-    } else if(continent == 'africa') {
-        localStorage.setItem("title", "Africa");
-        localStorage.setItem("countries", "55");
-        localStorage.setItem("population", "1.39 Billion");
-        localStorage.setItem("landArea", "30.37 Million km^2");
-    } else if(continent == 'northAmerica') {
-        localStorage.setItem("title", "North America");
-        localStorage.setItem("countries", "23");
-        localStorage.setItem("population", "592.296 Million");
-        localStorage.setItem("landArea", "24.709 Million km^2");
-    } else if(continent == 'southAmerica') {
-        localStorage.setItem("title", "South America");
-        localStorage.setItem("countries", "12");
-        localStorage.setItem("population", "434.25 Million");
-        localStorage.setItem("landArea", "17.84 Million km^2");
-    } else if(continent == 'oceania') {
-        localStorage.setItem("title", "Oceania");
-        localStorage.setItem("countries", "16");
-        localStorage.setItem("population", "44.49 Million");
-        localStorage.setItem("landArea", "8.526 Million km^2");
+import React, {} from 'react'
+import { Card, Container, Button } from 'react-bootstrap';
+
+const ContinentSelectionPage = () => {
+
+    const continent = (continent) => {
+        localStorage.setItem("continent", continent);
     }
-}
 
-if (window.location.pathname === "/continent") {
-    window.onload = updateImageFromVariable;
-}
+    const navigateToOtherPage = () => {
+        window.location.href = "http://localhost:8096/continent";
+    }
 
-function updateImageFromVariable() {
-    var title = localStorage.getItem("title");
-    var image = localStorage.getItem("image");
-    var countries = localStorage.getItem("countries");
-    var population = localStorage.getItem("population");
-    var landArea = localStorage.getItem("landArea");
+    const containerStyle = {
+        backgroundColor: '#00009a',
+        width: '100%',
+        height: '92.8vh', 
+        display: 'flex', 
+        justifyContent: 'space-around', 
+    };
 
-    var myHeading = document.getElementById("myHeading");
-    myHeading.innerText = title;
+    const worldTypeCard = {
+        backgroundColor: '#009a00',
+        width: '60vh',
+        height: '70vh',
+        alignSelf: 'center',
+    };
+    
+    const fixedCardStyle = {
+        width: '20vh',
+        height: '20vh',
+        marginBottom: '5%',
+    };
+      
+    const flexContainerStyle = {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+    };
+      
+    const middleCardStyle = {
+        width: '40vh',
+        alignSelf: 'center',
+    };
 
-    var myImage = document.getElementById("continentImage");
-    myImage.src = "images/" + image + ".png";
+    const titleStyle = {
+        fontSize: '4vh',
+        textAlign: 'center',
+        marginBottom: '5vh',
+    };
 
-    var myCountries = document.getElementById("myCountries");
-    myCountries.innerText = "Countries: " + countries;
+    const buttonStyle = {
+        fontSize: '1vw',
+        marginBottom: '5px',
+        width: '16vh',
+        height: '5vh',
+        background: '#FFFFFF',
+        alignSelf: 'center',
+    };
 
-    var myPopulation = document.getElementById("myPopulation");
-    myPopulation.innerText = "Population: " + population;
+    const imageStyle = {
+        width: '10vh',
+        height: '10vh',
+        alignSelf: 'center',
+    };
 
-    var myLandArea = document.getElementById("myLandArea");
-    myLandArea.innerText = "Land Area: " + landArea;
-}
+    const middleImageStyle = {
+        width: '95%',
+        height: '95%',
+        alignSelf: 'center',
+    };
 
-function openPage() {   
-    window.open("http://localhost:8096/continent", "_self");
-}
-
-const ContinentSelectionPage = () =>{
     return(
-        <body class="page">
-        <section class="world-section-continents">
-            <h2 class="world-section-title">Old World</h2>
-            <div class="continents">
-                <div class="continent">
-                    <span class="continent-title">Europe</span>
-                    <input class="img" type="image" onClick={(e) => {continentPage('europe'); openPage();}} src="images/europe.png"></input>
+        <Container fluid style={containerStyle}>
+            <Card style={worldTypeCard}>
+                <Card.Body className="d-flex flex-column justify-content-center">
+                <Card.Title style={titleStyle}>Old World</Card.Title>
+                <div style={flexContainerStyle}>
+                <Card style={fixedCardStyle}>
+                    <Card.Body className="d-flex flex-column justify-content-center">
+                        <Button style={buttonStyle} variant="light" onClick={() => {continent('europe'); navigateToOtherPage();}}>Europe</Button>
+                        <Card.Img style={imageStyle} variant="bottom" src="images/europe.png" />
+                    </Card.Body>
+                    </Card>
+                    <Card style={fixedCardStyle}>
+                    <Card.Body className="d-flex flex-column justify-content-center">
+                        <Button style={buttonStyle} variant="light" onClick={() => {continent('asia'); navigateToOtherPage();}}>Asia</Button>
+                        <Card.Img style={imageStyle} variant="bottom" src="images/asia.png" />
+                    </Card.Body>
+                    </Card>
+                    <Card style={fixedCardStyle}>
+                    <Card.Body className="d-flex flex-column justify-content-center">
+                        <Button style={buttonStyle} variant="light" onClick={() => {continent('africa'); navigateToOtherPage();}}>Africa</Button>
+                        <Card.Img style={imageStyle} variant="bottom" src="images/africa.png" />
+                    </Card.Body>
+                    </Card>
                 </div>
-                <div class="continent">
-                    <span class="continent-title">Asia</span>
-                    <input class="img" type="image" onClick={(e) => {continentPage('asia'); openPage();}} src="images/asia.png"></input>
-                </div>
-                <div class="continent">
-                    <span class="continent-title">Africa</span>
-                    <input class="img" type="image" onClick={(e) => {continentPage('africa'); openPage();}} src="images/africa.png"></input>
-                </div>
-            </div>
-        </section>
+                </Card.Body>
+            </Card>
 
-        <section class="world-section">
-            <span class="header">Choose a Continent</span>
-            <h2 class="world-section-title">The World</h2>
-            <input class="world-img" type="image" onClick={(e) => {continentPage('world'); openPage();}} src="images/world.png"></input>
-        </section>
+            <Card style={middleCardStyle}>
+                <Card.Body className="d-flex flex-column justify-content-center">
+                    <Button style={buttonStyle} variant="light" onClick={() => {continent('world'); navigateToOtherPage();}}>The World</Button>
+                    <Card.Img style={middleImageStyle} variant="bottom" src="images/world.png" />
+                </Card.Body>
+            </Card>
 
-        <section class="world-section-continents">
-            <h2 class="world-section-title">New World</h2>
-            <div class="continents">
-                <div class="continent">
-                    <span class="continent-title">North America</span>
-                    <input class="img" type="image" onClick={(e) => {continentPage('northAmerica'); openPage();}} src="images/northAmerica.png"></input>
+            <Card style={worldTypeCard}>
+                <Card.Body className="d-flex flex-column justify-content-center">
+                <Card.Title style={titleStyle}>New World</Card.Title>
+                <div style={flexContainerStyle}>
+                <Card style={fixedCardStyle}>
+                    <Card.Body className="d-flex flex-column justify-content-center">
+                        <Button style={buttonStyle} variant="light" onClick={() => {continent('northAmerica'); navigateToOtherPage();}}>North America</Button>
+                        <Card.Img style={imageStyle} variant="bottom" src="images/northAmerica.png" />
+                    </Card.Body>
+                    </Card>
+                    <Card style={fixedCardStyle}>
+                    <Card.Body className="d-flex flex-column justify-content-center">
+                        <Button style={buttonStyle} variant="light" onClick={() => {continent('southAmerica'); navigateToOtherPage();}}>South America</Button>
+                        <Card.Img style={imageStyle} variant="bottom" src="images/southAmerica.png" />
+                    </Card.Body>
+                    </Card>
+                    <Card style={fixedCardStyle}>
+                    <Card.Body className="d-flex flex-column justify-content-center">
+                        <Button style={buttonStyle} variant="light" onClick={() => {continent('oceania'); navigateToOtherPage();}}>Oceania</Button>
+                        <Card.Img style={imageStyle} variant="bottom" src="images/oceania.png" />
+                    </Card.Body>
+                    </Card>
                 </div>
-                <div class="continent">
-                    <span class="continent-title">South America</span>
-                    <input class="img" type="image" onClick={(e) => {continentPage('southAmerica'); openPage();}} src="images/southAmerica.png"></input>
-                </div>
-                <div class="continent">
-                    <span class="continent-title">Oceania</span>
-                    <input class="img" type="image" onClick={(e) => {continentPage('oceania'); openPage();}} src="images/oceania.png"></input>
-                </div>
-            </div>
-        </section>
-    </body>
+                </Card.Body>
+            </Card>
+        </Container>
     )
 }
 
