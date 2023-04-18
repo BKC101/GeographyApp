@@ -65,8 +65,8 @@ const ContinentPage = () => {
     };
     
     const fixedCardStyle = {
-        width: '20vh',
-        height: '20vh',
+        width: '22vh',
+        height: '22vh',
         marginBottom: '5%',
     };
       
@@ -94,6 +94,14 @@ const ContinentPage = () => {
         textAlign: 'center',
     };
 
+    const buttonStyle = {
+        fontSize: '2vw',
+        width: '21vh',
+        height: '10vh',
+        background: '#FFFFFF',
+        alignSelf: 'center',
+    };
+
     return(
         <Container fluid style={containerStyle}>
             <Card style={worldTypeCard}>
@@ -112,22 +120,22 @@ const ContinentPage = () => {
                 <div style={flexContainerStyle}>
                     <Card style={fixedCardStyle}>
                         <Card.Body className="d-flex flex-column justify-content-center">
-                            <Card.Title>Study</Card.Title>
+                            <Button style={buttonStyle} variant="light" href="/study">Study</Button>
                         </Card.Body>
                     </Card>
                     <Card style={fixedCardStyle}>
                         <Card.Body className="d-flex flex-column justify-content-center">
-                            <Card.Title>Practice</Card.Title>
+                            <Button style={buttonStyle} variant="light" href="/quiz">Practice</Button>
                         </Card.Body>
                     </Card>
                     <Card style={fixedCardStyle}>
                         <Card.Body className="d-flex flex-column justify-content-center">
-                            <Card.Title>Review</Card.Title>
+                            <Button style={buttonStyle} variant="light">Review</Button>
                         </Card.Body>
                     </Card>
                     <Card style={fixedCardStyle}>
                         <Card.Body className="d-flex flex-column justify-content-center">
-                            <Card.Title>Challenge</Card.Title>
+                            <Button style={buttonStyle} variant="light">Challenge</Button>
                         </Card.Body>
                     </Card>
                 </div>

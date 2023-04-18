@@ -9,8 +9,10 @@ import HomePage from "./components/pages/homePage";
 import Login from "./components/pages/loginPage";
 import Signup from "./components/pages/registerPage";
 import PrivateUserProfile from "./components/pages/privateUserProfilePage";
-import ContinentPage from "./components/pages/continentPage";
 import ContinentSelectionPage from "./components/pages/continentSelectionPage";
+import ContinentPage from "./components/pages/continentPage";
+import StudyPage from "./components/pages/studyPage";
+import QuizPage from "./components/pages/quizPage";
 import { createContext, useState, useEffect } from "react";
 import getUserInfo from "./utilities/decodeJwt";
 
@@ -34,14 +36,14 @@ const App = () => {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route path="/privateUserProfile" element={<PrivateUserProfile />} />
-          <Route path="/continent" element={<ContinentPage />} />
           <Route path="/continentSelection" element={<ContinentSelectionPage />} />
+          <Route path="/continent" element={<ContinentPage />} />
+          <Route path="/study" element={<StudyPage />} />
+          <Route path="/quiz" element={<QuizPage />} />
         </Routes>
       </UserContext.Provider>
     </>
   );
 };
-
-
 
 export default App
