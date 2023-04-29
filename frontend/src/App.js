@@ -37,9 +37,9 @@ const App = () => {
           <Route exact path="/signup" element={<Signup />} />
           <Route path="/privateUserProfile" element={<PrivateUserProfile />} />
           <Route path="/continentSelection" element={<ContinentSelectionPage />} />
-          <Route path="/continent" element={<ContinentPage />} />
-          <Route path="/study" element={<StudyPage />} />
-          <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/continent/:continent" element={<ContinentPage />} />
+          <Route path="/study/:continent" element={<StudyPage />} />
+          <Route path="/quiz/:continent" element={<QuizPage />} />
         </Routes>
       </UserContext.Provider>
     </>

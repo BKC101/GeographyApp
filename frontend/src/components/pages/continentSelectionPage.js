@@ -2,15 +2,6 @@ import React, {} from 'react'
 import { Card, Container, Button } from 'react-bootstrap';
 
 const ContinentSelectionPage = () => {
-
-    const continent = (continent) => {
-        localStorage.setItem("continent", continent);
-    }
-
-    const navigateToOtherPage = () => {
-        window.location.href = "http://localhost:8096/continent";
-    }
-
     const containerStyle = {
         backgroundColor: '#00009a',
         width: '100%',
@@ -78,20 +69,20 @@ const ContinentSelectionPage = () => {
                 <div style={flexContainerStyle}>
                 <Card style={fixedCardStyle}>
                     <Card.Body className="d-flex flex-column justify-content-center">
-                        <Button style={buttonStyle} variant="light" onClick={() => {continent('europe'); navigateToOtherPage();}}>Europe</Button>
-                        <Card.Img style={imageStyle} variant="bottom" src="images/europe.png" />
+                        <Button style={buttonStyle} variant="light" href='/continent/europe'>Europe</Button>
+                        <Card.Img style={imageStyle} variant="bottom" src="/images/europe.png" />
                     </Card.Body>
                     </Card>
                     <Card style={fixedCardStyle}>
                     <Card.Body className="d-flex flex-column justify-content-center">
-                        <Button style={buttonStyle} variant="light" onClick={() => {continent('asia'); navigateToOtherPage();}}>Asia</Button>
-                        <Card.Img style={imageStyle} variant="bottom" src="images/asia.png" />
+                        <Button style={buttonStyle} variant="light" href='/continent/asia'>Asia</Button>
+                        <Card.Img style={imageStyle} variant="bottom" src="/images/asia.png" />
                     </Card.Body>
                     </Card>
                     <Card style={fixedCardStyle}>
                     <Card.Body className="d-flex flex-column justify-content-center">
-                        <Button style={buttonStyle} variant="light" onClick={() => {continent('africa'); navigateToOtherPage();}}>Africa</Button>
-                        <Card.Img style={imageStyle} variant="bottom" src="images/africa.png" />
+                        <Button style={buttonStyle} variant="light" href='/continent/africa'>Africa</Button>
+                        <Card.Img style={imageStyle} variant="bottom" src="/images/africa.png" />
                     </Card.Body>
                     </Card>
                 </div>
@@ -100,8 +91,8 @@ const ContinentSelectionPage = () => {
 
             <Card style={middleCardStyle}>
                 <Card.Body className="d-flex flex-column justify-content-center">
-                    <Button style={buttonStyle} variant="light" onClick={() => {continent('world'); navigateToOtherPage();}}>The World</Button>
-                    <Card.Img style={middleImageStyle} variant="bottom" src="images/world.png" />
+                    <Button style={buttonStyle} variant="light" href='/continent/world'>The World</Button>
+                    <Card.Img style={middleImageStyle} variant="bottom" src="/images/world.png" />
                 </Card.Body>
             </Card>
 
@@ -111,20 +102,20 @@ const ContinentSelectionPage = () => {
                 <div style={flexContainerStyle}>
                 <Card style={fixedCardStyle}>
                     <Card.Body className="d-flex flex-column justify-content-center">
-                        <Button style={buttonStyle} variant="light" onClick={() => {continent('northAmerica'); navigateToOtherPage();}}>North America</Button>
-                        <Card.Img style={imageStyle} variant="bottom" src="images/northAmerica.png" />
+                        <Button style={buttonStyle} variant="light" href='/continent/northAmerica'>North America</Button>
+                        <Card.Img style={imageStyle} variant="bottom" src="/images/northAmerica.png" />
                     </Card.Body>
                     </Card>
                     <Card style={fixedCardStyle}>
                     <Card.Body className="d-flex flex-column justify-content-center">
-                        <Button style={buttonStyle} variant="light" onClick={() => {continent('southAmerica'); navigateToOtherPage();}}>South America</Button>
-                        <Card.Img style={imageStyle} variant="bottom" src="images/southAmerica.png" />
+                        <Button style={buttonStyle} variant="light" href='/continent/southAmerica'>South America</Button>
+                        <Card.Img style={imageStyle} variant="bottom" src="/images/southAmerica.png" />
                     </Card.Body>
                     </Card>
                     <Card style={fixedCardStyle}>
                     <Card.Body className="d-flex flex-column justify-content-center">
-                        <Button style={buttonStyle} variant="light" onClick={() => {continent('oceania'); navigateToOtherPage();}}>Oceania</Button>
-                        <Card.Img style={imageStyle} variant="bottom" src="images/oceania.png" />
+                        <Button style={buttonStyle} variant="light" href='/continent/oceania'>Oceania</Button>
+                        <Card.Img style={imageStyle} variant="bottom" src="/images/oceania.png" />
                     </Card.Body>
                     </Card>
                 </div>
