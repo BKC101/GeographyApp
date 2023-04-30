@@ -5,87 +5,124 @@ import { useParams } from "react-router-dom";
 const QuizPage = () => {
     const { continent } = useParams();
     const [inputValue, setInputValue] = useState("");
-    const [correctWords, setCorrectWords] = useState({});
-    const [timer, setTimer] = useState(90);
+    const [correctCountries, setCorrectCountries] = useState({});
     const [showModal, setShowModal] = useState(false);
 
     const continentQuizzes = {
-        world: [
-            ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan"],
-            ["Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi"],
-            ["Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Columbia", "Comoros", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czechia"],
-            ["Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia"],
-            ["Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guinea", "Guyana", "Guinea-Bissau", "Hati", "Hungary"],
-            ["Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isreal", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kosovo", "Kuwait", "Kyrgyzstan"],
-            ["Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Liechtenstein", "Lithuania", "Luxembourg", "Lybia", "Malaysia", "Maldives", "Malta", "Marshall Islands", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Morocco", "Montenegro","Mozambique", "Myanmar"],
-            ["Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Niger", "Nicaragua", "Nigeria", "North Korea", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal"],
-            ["Qatar", "Republic of the Congo", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Seychelles", "Serbia", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Soloman Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria"],
-            ["Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkiye", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Kingdom", "United States of America", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"]
-        ],
+        world: {
+            countries: [
+                ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina"],
+                ["Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh"],
+                ["Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia"],
+                ["Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi"],
+                ["Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile"],
+                ["China", "Columbia", "Comoros", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba"],
+                ["Cyprus", "Czechia", "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic"],
+                ["Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini"],
+                ["Ethiopia", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany"],
+                ["Ghana", "Greece", "Grenada", "Guinea", "Guyana", "Guinea-Bissau", "Hati"],
+                ["Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland"],
+                ["Isreal", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya"],
+                ["Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho"],
+                ["Liberia", "Liechtenstein", "Lithuania", "Luxembourg", "Lybia", "Malaysia", "Maldives"],
+                ["Malta", "Marshall Islands", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco"],
+                ["Mongolia", "Morocco", "Montenegro", "Mozambique", "Myanmar", "Namibia", "Nauru"],
+                ["Nepal", "Netherlands", "New Zealand", "Niger", "Nicaragua", "Nigeria", "North Korea"],
+                ["North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama"],
+                ["Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar"],
+                ["Republic of the Congo", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines"],
+                ["Samoa", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Seychelles", "Serbia", "Sierra Leone"],
+                ["Singapore", "Slovakia", "Slovenia", "Soloman Islands", "Somalia", "South Africa", "South Korea"],
+                ["South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland"],
+                ["Syria", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga"],
+                ["Trinidad and Tobago", "Tunisia", "Turkiye", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine"],
+                ["United Kingdom", "United States of America", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela"],
+                ["Vietnam", "Yemen", "Zambia", "Zimbabwe"]
+            ],
 
-        europe: [
-            ["Albania", "Andorra", "Armenia", "Austria", "Azerbaijan"],
-            ["Belarus", "Belgium", "Bosnia and Herzegovina", "Bulgaria"],
-            ["Croatia", "Cyprus", "Czechia", "Denmark", "Estonia"],
-            ["Finland", "France", "Georgia", "Germany", "Greece"],
-            ["Hungary", "Iceland", "Ireland", "Italy", "Kazakhstan", "Kosovo"],
-            ["Latvia", "Liechtenstein", "Lithuania", "Luxembourg"],
-            ["Malta", "Moldova", "Monaco", "Montenegro", "Netherlands", "North Macedonia", "Norway"],
-            ["Poland", "Portugal", "Romania", "Russia"],
-            ["San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland"],
-            ["Turkiye", "Ukraine", "United Kingdom", "Vatican City"]
-        ],
+            timer: 900
+        },
 
-        asia: [
-            ["Afghanistan", "Armenia", "Azerbaijan"],
-            ["Bahrain", "Bangladesh", "Bhutan", "Brunei"],
-            ["Cambodia", "China", "Cyprus", "Egypt", "Georgia"],
-            ["India", "Indonesia", "Iran", "Iraq", "Isreal"],
-            ["Japan", "Jordan", "Kazakhstan", "Kuwait", "Kyrgyzstan"],
-            ["Laos", "Lebanon", "Malaysia", "Maldives", "Mongolia", "Myanmar"],
-            ["Nepal", "North Korea", "Oman", "Pakistan", "Palestine", "Philippines", "Qatar"],
-            ["Russia", "Saudi Arabia", "Singapore", "South Korea", "Sri Lanka", "Syria"],
-            ["Tajikistan", "Thailand", "Timor-Leste", "Turkiye", "Turkmenistan"],
-            ["United Arab Emirates", "Uzbekistan", "Vietnam", "Yemen"]
+        europe: {
+            countries: [
+                ["Albania", "Andorra", "Armenia", "Austria", "Azerbaijan", "Belarus", "Belgium"],
+                ["Bosnia and Herzegovina", "Bulgaria", "Croatia", "Cyprus", "Czechia", "Denmark", "Estonia"],
+                ["Finland", "France", "Georgia", "Germany", "Greece", "Hungary", "Iceland"],
+                ["Ireland", "Italy", "Kazakhstan", "Kosovo", "Latvia", "Liechtenstein", "Lithuania"],
+                ["Luxembourg", "Malta", "Moldova", "Monaco", "Montenegro", "Netherlands", "North Macedonia"],
+                ["Norway", "Poland", "Portugal", "Romania", "Russia", "San Marino", "Serbia"],
+                ["Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Turkiye", "Ukraine"],
+                ["United Kingdom", "Vatican City"]
+            ],
 
-        ],
+            timer: 300
+        },
 
-        africa: [
-            ["Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi"],
-            ["Cabo Verde", "Cameroon", "Central African Republic", "Chad", "Comoros", "Cote d'Ivoire"],
-            ["Democratic Republic of the Congo", "Djibouti", "Egypt", "Equatorial Guinea", "Eritrea", "Eswatini", "Ethiopia"],
-            ["Gabon", "Gambia", "Ghana", "Guinea", "Guinea-Bissau", "Kenya"],
-            ["Lesotho", "Liberia", "Lybia", "Madagascar", "Malawi", "Mali", "Mauritania"],
-            ["Mauritius", "Morocco", "Mozambique", "Namibia", "Niger", "Nigeria", "Republic of the Congo", "Rwanda"],
-            ["Sao Tome and Principe", "Senegal", "Seychelles", "Sierra Leone"],
-            ["Somalia", "South Africa", "South Sudan", "Sudan"],
-            ["Tanzania", "Togo", "Tunisia", "Uganda", "Zambia", "Zimbabwe"]
-        ],
+        asia: {
+            countries: [
+                ["Afghanistan", "Armenia", "Azerbaijan", "Bahrain", "Bangladesh", "Bhutan", "Brunei"],
+                ["Cambodia", "China", "Cyprus", "Egypt", "Georgia", "India", "Indonesia"],
+                ["Iran", "Iraq", "Isreal", "Japan", "Jordan", "Kazakhstan", "Kuwait"],
+                ["Kyrgyzstan", "Laos", "Lebanon", "Malaysia", "Maldives", "Mongolia", "Myanmar"],
+                ["Nepal", "North Korea", "Oman", "Pakistan", "Palestine", "Philippines", "Qatar"],
+                ["Russia", "Saudi Arabia", "Singapore", "South Korea", "Sri Lanka", "Syria", "Tajikistan"],
+                ["Thailand", "Timor-Leste", "Turkiye", "Turkmenistan", "United Arab Emirates", "Uzbekistan", "Vietnam"],
+                ["Yemen"]
+            ],
 
-        northAmerica: [
-            ["Antigua and Barbuda", "Bahamas", "Barbados", "Belize"],
-            ["Canada", "Costa Rica", "Cuba", "Dominica", "Dominican Republic"],
-            ["El Salvador", "Grenada", "Guatemala", "Hati", "Honduras"],
-            ["Jamaica", "Mexico", "Nicaragua", "Panama"],
-            ["Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines"],
-            ["Trinidad and Tobago", "United States of America"]
-            
-        ],
+            timer: 300
+        },
 
-        southAmerica: [
-            ["Argentina", "Bolivia", "Brazil", "Chile"],
-            ["Columbia", "Ecuador", "Guyana", "Paraguay"],
-            ["Peru", "Suriname", "Uruguay", "Venezuela"],
-        ],
+        africa: {
+            countries: [
+                ["Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi", "Cabo Verde"],
+                ["Cameroon", "Central African Republic", "Chad", "Comoros", "Cote d'Ivoire", "Democratic Republic of the Congo", "Djibouti"],
+                ["Egypt", "Equatorial Guinea", "Eritrea", "Eswatini", "Ethiopia", "Gabon", "Gambia"],
+                ["Ghana", "Guinea", "Guinea-Bissau", "Kenya", "Lesotho", "Liberia", "Lybia"],
+                ["Madagascar", "Malawi", "Mali", "Mauritania", "Mauritius", "Morocco", "Mozambique"],
+                ["Namibia", "Niger", "Nigeria", "Republic of the Congo", "Rwanda", "Sao Tome and Principe", "Senegal"],
+                ["Seychelles", "Sierra Leone", "Somalia", "South Africa", "South Sudan", "Sudan", "Tanzania"],
+                ["Togo", "Tunisia", "Uganda", "Zambia", "Zimbabwe"]
+            ],
 
-        oceania: [
-            ["Australia", "Fiji", "Kiribati", "Marshall Islands", "Micronesia"],
-            ["Nauru", "New Zealand", "Palau", "Papua New Guinea"],
-            ["Samoa", "Soloman Islands", "Tonga", "Tuvalu", "Vanuatu"]
-        ]
+            timer: 360
+        },
+
+        northAmerica: {
+            countries: [
+                ["Antigua and Barbuda", "Bahamas", "Barbados", "Belize", "Canada"],
+                ["Costa Rica", "Cuba", "Dominica", "Dominican Republic", "El Salvador"],
+                ["Grenada", "Guatemala", "Hati", "Honduras", "Jamaica"],
+                ["Mexico", "Nicaragua", "Panama", "Saint Kitts and Nevis", "Saint Lucia"],
+                ["Saint Vincent and the Grenadines", "Trinidad and Tobago", "United States of America"]
+            ],
+
+            timer: 300
+        },
+
+        southAmerica: {
+            countries: [
+                ["Argentina", "Bolivia", "Brazil", "Chile"],
+                ["Columbia", "Ecuador", "Guyana", "Paraguay"],
+                ["Peru", "Suriname", "Uruguay", "Venezuela"],
+            ],
+
+            timer: 240
+        },
+
+        oceania: {
+            countries: [
+                ["Australia", "Fiji", "Kiribati", "Marshall Islands", "Micronesia"],
+                ["Nauru", "New Zealand", "Palau", "Papua New Guinea", "Samoa"],
+                ["Soloman Islands", "Tonga", "Tuvalu", "Vanuatu"]
+            ],
+
+            timer: 240
+        }
     };
 
-    const words = continentQuizzes[continent];
+    const countries = continentQuizzes[continent].countries;
+    const [timer, setTimer] = useState(continentQuizzes[continent].timer);
 
     useEffect(() => {
         if (timer > 0) {
@@ -99,16 +136,16 @@ const QuizPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        for (let row = 0; row < words.length; row++) {
-            const wordIndex = words[row].indexOf(inputValue);
-            if (wordIndex !== -1) {
-                setCorrectWords({ ...correctWords, [`${row}-${wordIndex}`]: inputValue });
+        for (let row = 0; row < countries.length; row++) {
+            const countryIndex = countries[row].indexOf(inputValue);
+            if (countryIndex !== -1) {
+                setCorrectCountries({ ...correctCountries, [`${row}-${countryIndex}`]: inputValue });
                 setInputValue("");
                 break;
             }
         }
 
-        if (Object.keys(correctWords).length === words.flat().length) {
+        if (Object.keys(correctCountries).length === countries.flat().length) {
             setShowModal(true);
         }
     };
@@ -116,7 +153,7 @@ const QuizPage = () => {
     const closeModal = () => {
         setShowModal(false);
         setTimer(60);
-        setCorrectWords({});
+        setCorrectCountries({});
     };
 
     return (
@@ -127,7 +164,7 @@ const QuizPage = () => {
                 <Form.Group>
                     <Form.Control
                         type="text"
-                        placeholder="Type a word"
+                        placeholder="Name a Country"
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                     />
@@ -138,15 +175,15 @@ const QuizPage = () => {
             </Form>
 
             <Container className="mt-5">
-                {words.map((rowWords, rowIndex) => (
+                {countries.map((rowWords, rowIndex) => (
                     <Row key={rowIndex} className="mb-3">
                         {rowWords.map((_, colIndex) => (
                             <Col key={colIndex}>
                                 <div
                                     className="border rounded text-center p-2"
-                                    style={{ width: "100px", height: "50px" }}
+                                    style={{ width: "150px", height: "65px" }}
                                 >
-                                    {correctWords[`${rowIndex}-${colIndex}`]}
+                                    {correctCountries[`${rowIndex}-${colIndex}`]}
                                 </div>
                             </Col>
                         ))}
@@ -159,7 +196,7 @@ const QuizPage = () => {
                     <Modal.Title>Quiz Results</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    You got {Object.keys(correctWords).length} out of {words.flat().length} words correct!
+                    You got {Object.keys(correctCountries).length} out of {countries.flat().length} words correct!
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeModal}>
