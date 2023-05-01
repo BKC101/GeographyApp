@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Form, Button, Modal } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Modal, ButtonGroup } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 const QuizPage = () => {
@@ -8,7 +8,11 @@ const QuizPage = () => {
     const [correctCountries, setCorrectCountries] = useState({});
     const [showModal1, setShowModal1] = useState(true);
     const [showModal2, setShowModal2] = useState(false);
+    const [quizType, setQuizType] = useState("countries");
     const handleClose = () => setShowModal1(false);
+    const handleQuizTypeChange = (newQuizType) => setQuizType(newQuizType);
+    const endQuizEarly = () => setShowModal2(true);
+    
 
     const continentQuizzes = {
         world: {
@@ -211,30 +215,30 @@ const QuizPage = () => {
     };
 
     const countries = continentQuizzes[continent].countries;
+    const capitals = continentQuizzes[continent].capitals;
     const [timer, setTimer] = useState(continentQuizzes[continent].timer);
 
     useEffect(() => {
-        if (timer > 0) {
+        if (!showModal1 && !showModal2 && timer > 0) {
             const timeout = setTimeout(() => setTimer(timer - 1), 1000);
             return () => clearTimeout(timeout);
-        } else {
-            setShowModal2(true);
         }
-    }, [timer]);
+    }, [timer, showModal1, showModal2]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const quizData = quizType === "countries" ? countries : capitals;
 
-        for (let row = 0; row < countries.length; row++) {
-            const countryIndex = countries[row].indexOf(inputValue);
-            if (countryIndex !== -1) {
-                setCorrectCountries({ ...correctCountries, [`${row}-${countryIndex}`]: inputValue });
+        for (let row = 0; row < quizData.length; row++) {
+            const dataIndex = quizData[row].indexOf(inputValue);
+            if (dataIndex !== -1) {
+                setCorrectCountries({ ...correctCountries, [`${row}-${dataIndex}`]: inputValue });
                 setInputValue("");
                 break;
             }
         }
 
-        if (Object.keys(correctCountries).length === countries.flat().length) {
+        if (Object.keys(correctCountries).length === quizData.flat().length) {
             setShowModal2(true);
         }
     };
@@ -261,6 +265,9 @@ const QuizPage = () => {
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
+                <Button variant="danger" className="ml-2" onClick={endQuizEarly}>
+                    End Quiz
+                </Button>
             </Form>
 
             <Container className="mt-5">
@@ -282,15 +289,31 @@ const QuizPage = () => {
 
             <Modal show={showModal1} onHide={handleClose} backdrop="static">
                 <Modal.Header closeButton>
-                    <Modal.Title>Welcome to my website!</Modal.Title>
+                    <Modal.Title>Practice Quiz</Modal.Title>
                 </Modal.Header>
                     <Modal.Body>
-                        <p>This is a demo modal that opens when the page loads.</p>
-                        <p>You can customize it to show any content you want.</p>
+                        <p>Please choose a quiz type:</p>
+                        <ButtonGroup>
+                            <Button
+                                variant={quizType === "countries" ? "primary" : "outline-primary"}
+                                onClick={() => handleQuizTypeChange("countries")}
+                            >
+                                Countries
+                            </Button>
+                            <Button
+                                variant={quizType === "capitals" ? "primary" : "outline-primary"}
+                                onClick={() => handleQuizTypeChange("capitals")}
+                            >
+                                Capitals
+                            </Button>
+                        </ButtonGroup>
                     </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
+                    </Button>
+                    <Button variant="primary" onClick={handleClose}>
+                        Start Quiz
                     </Button>
                 </Modal.Footer>
             </Modal>
