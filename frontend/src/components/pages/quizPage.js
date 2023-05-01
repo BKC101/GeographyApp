@@ -6,13 +6,9 @@ const QuizPage = () => {
     const { continent } = useParams();
     const [inputValue, setInputValue] = useState("");
     const [correctCountries, setCorrectCountries] = useState({});
-    const [showModal1, setShowModal1] = useState(true);
-    const [showModal2, setShowModal2] = useState(false);
+    const [showModal, setShowModal] = useState(true);
     const [quizType, setQuizType] = useState("countries");
-    const handleClose = () => setShowModal1(false);
     const handleQuizTypeChange = (newQuizType) => setQuizType(newQuizType);
-    const endQuizEarly = () => setShowModal2(true);
-    
 
     const continentQuizzes = {
         world: {
@@ -216,14 +212,25 @@ const QuizPage = () => {
 
     const countries = continentQuizzes[continent].countries;
     const capitals = continentQuizzes[continent].capitals;
+    const dataset = quizType === "capitals" ? capitals : countries;
     const [timer, setTimer] = useState(continentQuizzes[continent].timer);
+    const handleEndQuiz = () => setTimer(0);
+    const minutes = Math.floor(timer / 60);
+    const seconds = timer % 60;
+
+    const openModal = () => {
+        setCorrectCountries({});
+        setTimer(continentQuizzes[continent].timer);
+        setShowModal(true);
+    };
 
     useEffect(() => {
-        if (!showModal1 && !showModal2 && timer > 0) {
+        if (!showModal && timer > 0) {
             const timeout = setTimeout(() => setTimer(timer - 1), 1000);
             return () => clearTimeout(timeout);
         }
-    }, [timer, showModal1, showModal2]);
+
+    }, [timer, showModal]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -239,25 +246,34 @@ const QuizPage = () => {
         }
 
         if (Object.keys(correctCountries).length === quizData.flat().length) {
-            setShowModal2(true);
+            setShowModal(true);
         }
     };
 
     const closeModal = () => {
-        setShowModal2(false);
+        setShowModal(false);
         setTimer(continentQuizzes[continent].timer);
         setCorrectCountries({});
     };
 
+    const formatContinentName = (name) => {
+        const formattedName = name.charAt(0).toUpperCase() + name.slice(1).replace(/([A-Z])/g, ' $1');
+        return formattedName;
+    };
+
+    const quizTitle = `${formatContinentName(continent)} ${quizType === "countries" ? "Countries" : "Capitals"} Quiz`;
+
+
     return (
-        <Container>
-            <h1>Timed Quiz</h1>
-            <h2>Time Remaining: {timer}s</h2>
+        <Container style={{ backgroundColor: "#87ceeb", minHeight: "92.8vh" }}>
+            <h1>{quizTitle}</h1>
+            <h2>Time Remaining: {minutes}m {seconds}s</h2>
+            <h3>Correct: {Object.keys(correctCountries).length}/{countries.flat().length}</h3>
             <Form onSubmit={handleSubmit}>
                 <Form.Group>
                     <Form.Control
                         type="text"
-                        placeholder="Name a Country"
+                        placeholder={quizType === "countries" ? "Enter a Country" : "Enter a Capital"}
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                     />
@@ -265,29 +281,43 @@ const QuizPage = () => {
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
-                <Button variant="danger" className="ml-2" onClick={endQuizEarly}>
+                <Button variant="danger" className="ml-2" onClick={handleEndQuiz}>
                     End Quiz
+                </Button>
+                <Button variant="secondary" className="ml-2" onClick={openModal}>
+                    Quiz Options
                 </Button>
             </Form>
 
             <Container className="mt-5">
-                {countries.map((rowWords, rowIndex) => (
+                {dataset.map((rowWords, rowIndex) => (
                     <Row key={rowIndex} className="mb-3">
-                        {rowWords.map((_, colIndex) => (
-                            <Col key={colIndex}>
-                                <div
-                                    className="border rounded text-center p-2"
-                                    style={{ width: "150px", height: "65px" }}
-                                >
-                                    {correctCountries[`${rowIndex}-${colIndex}`]}
-                                </div>
-                            </Col>
-                        ))}
+                        {rowWords.map((word, colIndex) => {
+                            const wordKey = `${rowIndex}-${colIndex}`;
+                            const isCorrect = correctCountries[wordKey];
+                            const isGameOver = timer === 0;
+                            const boxColor = isCorrect ? "green" : isGameOver ? "red" : "white";
+
+                            return (
+                                <Col key={colIndex}>
+                                    <div
+                                        className="border rounded text-center p-2"
+                                        style={{
+                                            width: "150px",
+                                            height: "65px",
+                                            backgroundColor: boxColor,
+                                        }}
+                                    >
+                                        {isCorrect || isGameOver ? word : ""}
+                                    </div>
+                                </Col>
+                            );
+                        })}
                     </Row>
                 ))}
             </Container>
 
-            <Modal show={showModal1} onHide={handleClose} backdrop="static">
+            <Modal show={showModal} onHide={closeModal} backdrop="static">
                 <Modal.Header closeButton>
                     <Modal.Title>Practice Quiz</Modal.Title>
                 </Modal.Header>
@@ -309,27 +339,10 @@ const QuizPage = () => {
                         </ButtonGroup>
                     </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
+                    <Button variant="primary" onClick={closeModal}>
+                        Start
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Start Quiz
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-
-            <Modal show={showModal2} onHide={closeModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Quiz Results</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    You got {Object.keys(correctCountries).length} out of {countries.flat().length} words correct!
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={closeModal}>
-                        Retry
-                    </Button>
-                    <Button variant="primary" onClick={() => window.history.back()}>
+                    <Button variant="secondary" onClick={() => window.history.back()}>
                         Go Back
                     </Button>
                 </Modal.Footer>
