@@ -13,6 +13,7 @@ import ContinentSelectionPage from "./components/pages/continentSelectionPage";
 import ContinentPage from "./components/pages/continentPage";
 import StudyPage from "./components/pages/studyPage";
 import QuizPage from "./components/pages/quizPage";
+import ChallengePage from "./components/pages/challengePage";
 import { createContext, useState, useEffect } from "react";
 import getUserInfo from "./utilities/decodeJwt";
 
@@ -40,6 +41,7 @@ const App = () => {
           <Route path="/continent/:continent" element={<ContinentPage />} />
           <Route path="/study/:continent" element={<StudyPage />} />
           <Route path="/quiz/:continent" element={<QuizPage />} />
+          <Route path="/challenge/:continent" element={<ChallengePage />} />
         </Routes>
       </UserContext.Provider>
     </>
