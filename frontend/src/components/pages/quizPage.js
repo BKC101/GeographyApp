@@ -76,6 +76,39 @@ const QuizPage = () => {
                 ["Zagreb"]
             ],
 
+            mountains: [
+                ["Adamawa Plateau", "Ahaggar", "Air Massif", "Alaska Range", "Alborz", "Aleutian Range", "Alps"],
+                ["Altay", "Andes", "Annamite", "Appalachian", "Apennines", "Atlas", "Australian Alps"],
+                ["Balkan", "Barisan", "Brooks Range", "Carpathians", "Caucasus", "Chapada Diamantina", "Coast Ranges"],
+                ["Cordillera Central", "Cordillera de Merida", "Cordillera Occidental", "Cordillerra Oriental", "Da Hinggan Range", "Danan", "Darling Range"],
+                ["Drakensberg", "Dinaric Alps", "Eastern Ghats", "Ethiopian Plateau", "Fliners Range", "Great Dividing Range", "Hamersley Range"],
+                ["Hijaz", "Himalayas", "Hindu Kush", "Jabal Marrah", "Jos Plateau", "Jugjur", "Kilimanjaro"],
+                ["Kolen", "Kolyma", "Koryaksky", "Kunlun", "La Gran Sabana", "Macdonnell Ranges", "Mackenzie"],
+                ["Maoke", "Massif Central", "Monts Mitumba", "Mount Kenya", "Mufumbiro", "Musgrave Ranges", "Pennine Chain"],
+                ["Pindus", "Pontic", "Putorana Plateau", "Pyrenees", "Rhodope", "Rocky", "Ruwenzori Range"],
+                ["Sayan", "Scotish Highlands", "Sierra de Cordoba", "Sierra de la Ventana", "Sierra Madre del Sur", "Sierra Madre Occidental", "Sierra Madre Oriental"],
+                ["Sierra Nevada", "Sierra Nevada de Santa Marta", "Serra de Maracaju", "Serra do Cachimbo", "Serra do Espinaco", "Serra do Mar", "Serra do Roncador"],
+                ["Serra dos Parecis", "Serra Dourada", "Serra Formosa", "Serra Geral", "Serrania de Perija", "Southern Alps", "Stanovoy Range"],
+                ["Taurus", "Tian Shan", "Tibesti", "Ural", "Verkhoyansk Range", "Western Ghats", "Zagros"]
+            ],
+
+            rivers: [
+                ["Amazon", "Amur", "Arkansas", "Ashburton", "Awash Wenz", "Brahmaputra", "Blackwood"],
+                ["Brazos", "Chari", "Colorado", "Columbia", "Congo", "Cunene", "Danube"],
+                ["Daugava", "DeGray", "Dnieper", "Dniester", "Don", "Dordogne", "Douro"],
+                ["Ebro", "Elbe", "Euphrates", "Fitzroy", "Flinders", "Fortescue", "Fraser"],
+                ["Gambie", "Ganges", "Garonne", "Gascoyne", "Guadalquivir", "Indus", "Irrawaddy"],
+                ["Lena", "Limpopo", "Loire", "Mackenzie", "Mekong", "Mitchell", "Mississippi"],
+                ["Missouri", "Murchison", "Murray", "Nemunas", "Niger", "Nile", "Ob"],
+                ["Oder", "Ogooue", "Ohio", "Orange", "Ord", "Ottawa", "Pearl"],
+                ["Po", "Red", "Rhine", "Rhone", "Rio Balsas", "Rio Desaguadero", "Rio Grande"],
+                ["Rio Grande de Santiago", "Rio Magdalena", "Rio Orinoco", "Rio Parana", "Rio Parnaiba", "Rio Sao Francisco de Norte", "Rio Tocantins"],
+                ["Rio Xingu", "Salween", "Seine", "Senegal", "Shebele Shet", "Snake", "Saint Lawrence"],
+                ["Suttor", "Tagus", "Tana", "Tennessee", "Thames", "Tigris", "Uruguay"],
+                ["Ural", "Victoria", "Volga", "Volta", "Vistula", "Wooramel", "Yangtze"], 
+                ["Yellow", "Yenisey", "Yukon", "Zambezi"]
+            ],
+
             timer: 900
         },
 
@@ -100,6 +133,19 @@ const QuizPage = () => {
                 ["San Marino", "Sarajevo", "Skopje", "Sofia", "Stockholm", "Tbilisi", "Tallinn"],
                 ["Tirana", "Vaduz", "Valletta", "Vatican City", "Vienna", "Vilnius", "Warsaw"],
                 ["Yerevan", "Zagreb"]
+            ],
+
+            mountains: [
+                ["Alps", "Apennines", "Balkan", "Carpathians", "Caucasus", "Dinaric Alps", "Kolen"],
+                ["Massif Central", "Pennine Chain", "Pindus", "Pyrenees", "Rhodope", "Scotish Highlands", "Sierra Nevada"],
+                ["Ural"]
+            ],
+
+            rivers: [
+                ["Danube", "Daugava", "Dnieper", "Dniester", "Don", "Dordogne", "Ebro"],
+                ["Elbe", "Garonne", "Loire", "Nemunas", "Oder", "Po", "Rhine"],
+                ["Rhone", "Douro", "Guadalquivir", "Seine", "Tagus", "Thames", "Ural"],
+                ["Vistula", "Volga"]
             ],
 
             timer: 300
@@ -128,6 +174,19 @@ const QuizPage = () => {
                 ["Vientiane", "Yerevan"]
             ],
 
+            mountains: [
+                ["Alborz", "Altay", "Annamite", "Barisan", "Caucasus", "Da Hinggan Range", "Danan"],
+                ["Eastern Ghats", "Hijaz", "Himalayas", "Hindu Kush", "Jugjur", "Kolyma", "Koryaksky"],
+                ["Kunlun", "Maoke", "Pontic", "Putorana Plateau", "Sayan", "Stanovoy Range", "Taurus"],
+                ["Tian Shan", "Ural", "Verkhoyansk Range", "Western Ghats", "Zagros"]
+            ],
+
+            rivers: [
+                ["Amur", "Brahmaputra", "Euphrates", "Ganges", "Indus", "Irrawaddy", "Lena"],
+                ["Mekong", "Ob", "Pearl", "Salween", "Tigris", "Yangtze", "Yellow"],
+                ["Yenisey"]
+            ],
+
             timer: 300
         },
 
@@ -154,6 +213,17 @@ const QuizPage = () => {
                 ["Tunis", "Victoria", "Windhoek", "Yamoussoukro", "Yaounde"]
             ],
 
+            mountains: [
+                ["Adamawa Plateau", "Ahaggar", "Air Massif", "Atlas", "Drakensberg", "Ethiopian Plateau", "Jabal Marrah"],
+                ["Jos Plateau", "Kilimanjaro", "Monts Mitumba", "Mount Kenya", "Mufumbiro", "Ruwenzori Range", "Tibesti"]
+            ],
+
+            rivers: [
+                ["Awash Wenz", "Chari", "Congo", "Cunene", "Gambie", "Limpopo", "Niger"],
+                ["Nile", "Ogooue", "Orange", "Senegal", "Shebele Shet", "Tana", "Volta"],
+                ["Zambezi"]
+            ],
+
             timer: 360
         },
 
@@ -174,6 +244,17 @@ const QuizPage = () => {
                 ["Saint John's", "Tegucigalpa", "Washington D.C."]
             ],
 
+            mountains: [
+                ["Alaska Range", "Aleutian Range", "Appalachian", "Brooks Range", "Coast Ranges", "Mackenzie", "Rocky"],
+                ["Sierra Madre del Sur", "Sierra Madre Occidental", "Sierra Madre Oriental", "Sierra Nevada"]
+            ],
+
+            rivers: [
+                ["Arkansas", "Brazos", "Colorado", "Columbia", "Fraser", "Mackenzie", "Mississippi"],
+                ["Missouri", "Ohio", "Ottawa", "Red", "Rio Balsas", "Rio Grande", "Rio Grande de Santiago"],
+                ["Saint Lawrence", "Snake", "Tennessee", "Yukon"]
+            ],
+
             timer: 300
         },
 
@@ -188,6 +269,17 @@ const QuizPage = () => {
                 ["Asuncion", "Bogota", "Brasilia", "Buenos Aires"],
                 ["Caracas", "Georgetown", "Lima", "Montevideo"],
                 ["Paramaribo", "Quito", "Santiago", "Sucre"]
+            ],
+
+            mountains: [
+                ["Andes", "Chapada Diamantina", "Cordillera Central", "Cordillera de Merida", "Cordillera Occidental", "Cordillerra Oriental", "La Gran Sabana"],
+                ["Serra de Maracaju", "Serra do Cachimbo", "Serra do Espinaco", "Serra do Mar", "Serra do Roncador", "Serra dos Parecis", "Serra Dourada"],
+                ["Serra Formosa", "Serra Geral", "Serrania de Perija", "Sierra de Cordoba", "Sierra de la Ventana", "Sierra Nevada de Santa Marta"]
+            ],
+
+            rivers: [
+                ["Amazon", "Rio Desaguadero", "Rio Magdalena", "Rio Orinoco", "Rio Parana", "Rio Parnaiba", "Rio Sao Francisco de Norte"],
+                ["Rio Tocantins", "Rio Xingu", "Uruguay"]
             ],
 
             timer: 240
@@ -205,6 +297,16 @@ const QuizPage = () => {
                 ["Ngerulmud", "Nuku'alofa", "Palikir", "Port Moresby", "Port Vila"],
                 ["South Tarawa", "Suva", "Wellington", "Yaren"],
             ],
+
+            mountains: [
+                ["Australian Alps", "Darling Range", "Fliners Range", "Great Dividing Range", "Hamersley Range", "Macdonnell Ranges", "Maoke"],
+                ["Musgrave Ranges", "Southern Alps"]
+            ],
+
+            rivers: [
+                ["Ashburton", "Blackwood", "DeGray", "Fitzroy", "Flinders", "Fortescue", "Gascoyne"],
+                ["Mitchell", "Murchison", "Murray", "Ord", "Suttor", "Victoria", "Wooramel"]
+            ],
             
             timer: 240
         }
@@ -212,7 +314,29 @@ const QuizPage = () => {
 
     const countries = continentQuizzes[continent].countries;
     const capitals = continentQuizzes[continent].capitals;
-    const dataset = quizType === "capitals" ? capitals : countries;
+    const mountains = continentQuizzes[continent].mountains;
+    const rivers = continentQuizzes[continent].rivers;
+
+    let dataset;
+    let inputPlaceholder;
+    switch (quizType) {
+        case "capitals":
+            dataset = capitals;
+            inputPlaceholder = "Enter a Capital";
+            break;
+        case "mountains":
+            dataset = mountains;
+            inputPlaceholder = "Enter a Mountain";
+            break;
+        case "rivers":
+            dataset = rivers;
+            inputPlaceholder = "Enter a River";
+            break;
+        default:
+            dataset = countries;
+            inputPlaceholder = "Enter a Country";
+    }
+    
     const [timer, setTimer] = useState(continentQuizzes[continent].timer);
     const handleEndQuiz = () => setTimer(0);
     const minutes = Math.floor(timer / 60);
@@ -234,8 +358,21 @@ const QuizPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const quizData = quizType === "countries" ? countries : capitals;
-
+        let quizData;
+        switch (quizType) {
+            case "capitals":
+                quizData = capitals;
+                break;
+            case "mountains":
+                quizData = mountains;
+                break;
+            case "rivers":
+                quizData = rivers;
+                break;
+            default:
+                quizData = countries;
+        }
+    
         for (let row = 0; row < quizData.length; row++) {
             const dataIndex = quizData[row].indexOf(inputValue);
             if (dataIndex !== -1) {
@@ -244,11 +381,12 @@ const QuizPage = () => {
                 break;
             }
         }
-
+    
         if (Object.keys(correctCountries).length === quizData.flat().length) {
             setShowModal(true);
         }
     };
+    
 
     const closeModal = () => {
         setShowModal(false);
@@ -261,19 +399,19 @@ const QuizPage = () => {
         return formattedName;
     };
 
-    const quizTitle = `${formatContinentName(continent)} ${quizType === "countries" ? "Countries" : "Capitals"} Quiz`;
+    const quizTitle = `${formatContinentName(continent)} ${quizType[0].toUpperCase() + quizType.slice(1)} Quiz`;
 
 
     return (
         <Container style={{ backgroundColor: "#87ceeb", minHeight: "92.8vh" }}>
             <h1>{quizTitle}</h1>
             <h2>Time Remaining: {minutes}m {seconds}s</h2>
-            <h3>Correct: {Object.keys(correctCountries).length}/{countries.flat().length}</h3>
+            <h3>Correct: {Object.keys(correctCountries).length}/{dataset.flat().length}</h3>
             <Form onSubmit={handleSubmit}>
                 <Form.Group>
                     <Form.Control
                         type="text"
-                        placeholder={quizType === "countries" ? "Enter a Country" : "Enter a Capital"}
+                        placeholder={inputPlaceholder}
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                     />
@@ -335,6 +473,18 @@ const QuizPage = () => {
                                 onClick={() => handleQuizTypeChange("capitals")}
                             >
                                 Capitals
+                            </Button>
+                            <Button
+                                variant={quizType === "mountains" ? "primary" : "outline-primary"}
+                                onClick={() => handleQuizTypeChange("mountains")}
+                            >
+                                Mountains
+                            </Button>
+                            <Button
+                                variant={quizType === "rivers" ? "primary" : "outline-primary"}
+                                onClick={() => handleQuizTypeChange("rivers")}
+                            >
+                                Rivers
                             </Button>
                         </ButtonGroup>
                     </Modal.Body>
