@@ -146,11 +146,6 @@ const ContinentPage = () => {
                     </Card>
                     <Card style={fixedCardStyle}>
                         <Card.Body className="d-flex flex-column justify-content-center">
-                            <Button style={buttonStyle} variant="light">Review</Button>
-                        </Card.Body>
-                    </Card>
-                    <Card style={fixedCardStyle}>
-                        <Card.Body className="d-flex flex-column justify-content-center">
                             <Button style={buttonStyle} variant="light" href={`/challenge/${continent}`}>Challenge</Button>
                         </Card.Body>
                     </Card>

@@ -109,7 +109,7 @@ const ChallengePage = () => {
                 ["Yellow", "Yenisey", "Yukon", "Zambezi"]
             ],
 
-            timer: 900
+            timer: 1800
         },
 
         europe: {
@@ -148,7 +148,7 @@ const ChallengePage = () => {
                 ["Vistula", "Volga"]
             ],
 
-            timer: 300
+            timer: 600
         },
 
         asia: {
@@ -187,7 +187,7 @@ const ChallengePage = () => {
                 ["Yenisey"]
             ],
 
-            timer: 300
+            timer: 600
         },
 
         africa: {
@@ -224,7 +224,7 @@ const ChallengePage = () => {
                 ["Zambezi"]
             ],
 
-            timer: 360
+            timer: 720
         },
 
         northAmerica: {
@@ -255,7 +255,7 @@ const ChallengePage = () => {
                 ["Saint Lawrence", "Snake", "Tennessee", "Yukon"]
             ],
 
-            timer: 300
+            timer: 600
         },
 
         southAmerica: {
@@ -282,7 +282,7 @@ const ChallengePage = () => {
                 ["Rio Tocantins", "Rio Xingu", "Uruguay"]
             ],
 
-            timer: 240
+            timer: 480
         },
 
         oceania: {
@@ -308,7 +308,7 @@ const ChallengePage = () => {
                 ["Mitchell", "Murchison", "Murray", "Ord", "Suttor", "Victoria", "Wooramel"]
             ],
             
-            timer: 240
+            timer: 480
         }
     };
 
