@@ -17,7 +17,7 @@ const ContinentPage = () => {
         europe: {
             title: "Europe",
             image: "/images/europe.png",
-            countries: "46",
+            countries: "51",
             population: "745.17 Million",
             landArea: "10.18 Million km^2",
         },
@@ -25,7 +25,7 @@ const ContinentPage = () => {
         asia: {
             title: "Asia",
             image: "/images/asia.png",
-            countries: "48",
+            countries: "51",
             population: "4.69 Billion",
             landArea: "44.579 Million km^2",
         },
@@ -33,7 +33,7 @@ const ContinentPage = () => {
         africa: {
             title: "Africa",
             image: "/images/africa.png",
-            countries: "55",
+            countries: "54",
             population: "1.39 Billion",
             landArea: "30.37 Million km^2",
         },
@@ -57,7 +57,7 @@ const ContinentPage = () => {
         oceania: {
             title: "Oceania",
             image: "/images/oceania.png",
-            countries: "16",
+            countries: "14",
             population: "44.49 Million",
             landArea: "8.526 Million km^2",
         }

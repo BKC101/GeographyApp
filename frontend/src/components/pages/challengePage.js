@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Form, Button, Modal, ButtonGroup } from "react-bootstrap";
+import { Container, Row, Form, Button, Modal, ButtonGroup } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 const ChallengePage = () => {
@@ -388,6 +388,23 @@ const ChallengePage = () => {
 
     const quizTitle = `${formatContinentName(continent)} ${quizType[0].toUpperCase() + quizType.slice(1)} Quiz`;
 
+    const getHeaderIndex = () => {
+        if (quizType === "political") {
+          return political.countries.length;
+        } else if (quizType === "physical") {
+          return physical.mountains.length;
+        }
+    };      
+
+    const rowStyle = {
+        display: "flex",
+        justifyContent: "space-around",
+        alignItems: "center",
+        flexWrap: "wrap",
+        width: "100%",
+        paddingLeft: "8px",
+        paddingRight: "8px", 
+    };
 
     return (
         <Container style={{ backgroundColor: "#87ceeb", minHeight: "92.8vh" }}>
@@ -415,31 +432,37 @@ const ChallengePage = () => {
             </Form>
 
             <Container className="mt-5">
-                {dataset.map((rowWords, rowIndex) => (
-                    <Row key={rowIndex} className="mb-3">
-                        {rowWords.map((word, colIndex) => {
-                            const wordKey = `${rowIndex}-${colIndex}`;
-                            const isCorrect = correctCountries[wordKey];
-                            const isGameOver = timer === 0;
-                            const boxColor = isCorrect ? "green" : isGameOver ? "red" : "white";
+            {dataset.map((rowWords, rowIndex) => (
+  <React.Fragment key={rowIndex}>
+    {rowIndex === 0 && <h4>{quizType === "political" ? "Countries" : "Mountains"}</h4>}
+    {rowIndex === getHeaderIndex() && <h4>{quizType === "political" ? "Capitals" : "Rivers"}</h4>}
+    <Row className="mb-3">
+      <div style={rowStyle}>
+        {rowWords.map((word, colIndex) => {
+          const wordKey = `${rowIndex}-${colIndex}`;
+          const isCorrect = correctCountries[wordKey];
+          const isGameOver = timer === 0;
+          const boxColor = isCorrect ? "green" : isGameOver ? "red" : "white";
 
-                            return (
-                                <Col key={colIndex}>
-                                    <div
-                                        className="border rounded text-center p-2"
-                                        style={{
-                                            width: "150px",
-                                            height: "65px",
-                                            backgroundColor: boxColor,
-                                        }}
-                                    >
-                                        {isCorrect || isGameOver ? word : ""}
-                                    </div>
-                                </Col>
-                            );
-                        })}
-                    </Row>
-                ))}
+          return (
+            <div
+              key={colIndex}
+              className="border rounded text-center p-2"
+              style={{
+                width: "150px",
+                height: "65px",
+                backgroundColor: boxColor,
+                flex: "0 0 auto",
+              }}
+            >
+              {isCorrect || isGameOver ? word : ""}
+            </div>
+          );
+        })}
+      </div>
+    </Row>
+  </React.Fragment>
+))}
             </Container>
 
             <Modal show={showModal} onHide={closeModal} backdrop="static">

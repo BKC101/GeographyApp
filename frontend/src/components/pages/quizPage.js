@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Form, Button, Modal, ButtonGroup } from "react-bootstrap";
+import { Container, Row, Form, Button, Modal, ButtonGroup } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 const QuizPage = () => {
@@ -401,6 +401,15 @@ const QuizPage = () => {
 
     const quizTitle = `${formatContinentName(continent)} ${quizType[0].toUpperCase() + quizType.slice(1)} Quiz`;
 
+    const rowStyle = {
+        display: "flex",
+        justifyContent: "space-around",
+        alignItems: "center",
+        flexWrap: "wrap",
+        width: "100%",
+        paddingLeft: "8px",
+        paddingRight: "8px", 
+    };
 
     return (
         <Container style={{ backgroundColor: "#87ceeb", minHeight: "92.8vh" }}>
@@ -430,27 +439,29 @@ const QuizPage = () => {
             <Container className="mt-5">
                 {dataset.map((rowWords, rowIndex) => (
                     <Row key={rowIndex} className="mb-3">
+                    <div style={rowStyle}>
                         {rowWords.map((word, colIndex) => {
-                            const wordKey = `${rowIndex}-${colIndex}`;
-                            const isCorrect = correctCountries[wordKey];
-                            const isGameOver = timer === 0;
-                            const boxColor = isCorrect ? "green" : isGameOver ? "red" : "white";
+                        const wordKey = `${rowIndex}-${colIndex}`;
+                        const isCorrect = correctCountries[wordKey];
+                        const isGameOver = timer === 0;
+                        const boxColor = isCorrect ? "green" : isGameOver ? "red" : "white";
 
-                            return (
-                                <Col key={colIndex}>
-                                    <div
-                                        className="border rounded text-center p-2"
-                                        style={{
-                                            width: "150px",
-                                            height: "65px",
-                                            backgroundColor: boxColor,
-                                        }}
-                                    >
-                                        {isCorrect || isGameOver ? word : ""}
-                                    </div>
-                                </Col>
-                            );
+                        return (
+                            <div
+                            key={colIndex}
+                            className="border rounded text-center p-2"
+                            style={{
+                                width: "150px",
+                                height: "65px",
+                                backgroundColor: boxColor,
+                                flex: "0 0 auto",
+                            }}
+                            >
+                            {isCorrect || isGameOver ? word : ""}
+                            </div>
+                        );
                         })}
+                    </div>
                     </Row>
                 ))}
             </Container>
