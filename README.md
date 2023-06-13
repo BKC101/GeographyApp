@@ -1,5 +1,5 @@
 # geography-app
-This MERN stack implementation creates a small web application that lets users register, login, view a home page, and logout. 
+This MERN stack implementation creates a small web application that lets users study and practice geography, as well as give them an account that they can register, login, and logout. 
 
 Configuration
 -------------
